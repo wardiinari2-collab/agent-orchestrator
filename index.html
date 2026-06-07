@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Task Orchestrator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        h1 { font-size: 2.5rem; color: #58a6ff; margin-bottom: 0.5rem; }
+        .subtitle { color: #8b949e; font-size: 1.2rem; margin-bottom: 2rem; }
+        .badge { display: inline-block; margin-right: 0.5rem; }
+        h2 { color: #58a6ff; margin: 2rem 0 1rem; font-size: 1.5rem; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .feature { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.5rem; }
+        .feature h3 { color: #58a6ff; margin-bottom: 0.5rem; }
+        .feature p { color: #8b949e; font-size: 0.9rem; }
+        pre { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.5rem; overflow-x: auto; margin: 1rem 0; }
+        code { color: #f0883e; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9rem; }
+        .comment { color: #8b949e; }
+        .keyword { color: #ff7b72; }
+        .string { color: #a5d6ff; }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .cta { display: inline-block; background: #238636; color: #fff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; margin: 1rem 0.5rem 1rem 0; }
+        .cta:hover { background: #2ea043; text-decoration: none; }
+        .cta-secondary { background: #21262d; border: 1px solid #30363d; }
+        .cta-secondary:hover { background: #30363d; }
+        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agent Task Orchestrator</h1>
+        <p class="subtitle">Run multi-step tasks from YAML with plugin system, Telegram bot, and cron scheduling.</p>
+        <a href="https://github.com/wardiinari2-collab/agent-orchestrator" class="cta">View on GitHub</a>
+        <a href="https://github.com/wardiinari2-collab/agent-orchestrator#quick-start" class="cta cta-secondary">Get Started</a>
+
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>Multi-Step Tasks</h3>
+                <p>Define complex workflows in YAML. Steps execute sequentially with context passing between them.</p>
+            </div>
+            <div class="feature">
+                <h3>Plugin System</h3>
+                <p>Extend with custom plugins. Auto-discover from directory. Built-in HTTP, text, and file plugins.</p>
+            </div>
+            <div class="feature">
+                <h3>Telegram Bot</h3>
+                <p>Control orchestrator from Telegram. Run tasks, check status, view history — all from chat.</p>
+            </div>
+            <div class="feature">
+                <h3>Cron Scheduler</h3>
+                <p>Schedule recurring tasks with standard cron expressions. Background execution with logging.</p>
+            </div>
+        </div>
+
+        <h2>Quick Example</h2>
+<pre><code><span class="comment"># tasks/check_url.yaml</span>
+<span class="keyword">name</span>: <span class="string">check-url</span>
+<span class="keyword">steps</span>:
+  - <span class="keyword">name</span>: <span class="string">fetch</span>
+    <span class="keyword">handler</span>: <span class="string">http.get</span>
+    <span class="keyword">params</span>:
+      <span class="keyword">url</span>: <span class="string">"https://api.example.com/health"</span>
+  - <span class="keyword">name</span>: <span class="string">verify</span>
+    <span class="keyword">handler</span>: <span class="string">text.contains</span>
+    <span class="keyword">params</span>:
+      <span class="keyword">text</span>: <span class="string">"$step_fetch"</span>
+      <span class="keyword">keyword</span>: <span class="string">"ok"</span></code></pre>
+
+        <h2>Install</h2>
+<pre><code>pip install agent-orchestrator
+agent-orch run tasks/check_url.yaml</code></pre>
+
+        <h2>Architecture</h2>
+<pre><code>agent-orchestrator/
+├── src/agent_orchestrator/
+│   ├── engine.py          <span class="comment"># Core orchestrator</span>
+│   ├── plugin.py          <span class="comment"># Plugin system</span>
+│   ├── scheduler.py       <span class="comment"># Cron scheduler</span>
+│   ├── telegram_bot.py    <span class="comment"># Telegram interface</span>
+│   └── task.py            <span class="comment"># Task/result types</span>
+├── plugins/               <span class="comment"># Auto-discovered plugins</span>
+├── tasks/                 <span class="comment"># Task definitions</span>
+└── config.yaml            <span class="comment"># Configuration</span></code></pre>
+
+        <footer>
+            <p>Built by <a href="https://github.com/wardiinari2-collab">wardiinari2-collab</a> · MIT License</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,6 +1,11 @@
 # Agent Task Orchestrator
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue)](https://wardiinari2-collab.github.io/agent-orchestrator/)
+
 Run multi-step tasks from natural language with a plugin system, Telegram bot interface, and cron scheduling.
+
+**Live Demo:** https://wardiinari2-collab.github.io/agent-orchestrator/
 
 ## Features
 
