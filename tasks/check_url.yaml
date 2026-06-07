@@ -1,0 +1,12 @@
+name: check-url
+description: Check if a URL is responding
+steps:
+  - name: fetch
+    handler: http.get
+    params:
+      url: "https://httpbin.org/get"
+  - name: verify
+    handler: text.contains
+    params:
+      text: "$step_fetch"
+      keyword: "origin"

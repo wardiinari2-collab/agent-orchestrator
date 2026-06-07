@@ -1,0 +1,17 @@
+# Agent Orchestrator Configuration
+
+plugins:
+  directory: plugins
+  config:
+    http:
+      timeout: 30
+    file:
+      base_path: .
+
+telegram:
+  bot_token: ""  # Get from @BotFather
+  allowed_users: []  # Empty = allow all
+
+scheduler:
+  timezone: UTC
+  max_workers: 4

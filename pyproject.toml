@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-orchestrator"
+version = "0.1.0"
+description = "AI Agent Task Orchestrator — run multi-step tasks from natural language with plugin system, Telegram integration, and cron scheduling."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "wardiinari2-collab"}]
+keywords = ["ai", "agent", "orchestrator", "telegram", "automation", "tasks"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "pyyaml>=6.0",
+    "python-telegram-bot>=20.0",
+    "apscheduler>=3.10",
+    "httpx>=0.25",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-asyncio>=0.21", "ruff>=0.1"]
+
+[project.scripts]
+agent-orch = "agent_orchestrator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

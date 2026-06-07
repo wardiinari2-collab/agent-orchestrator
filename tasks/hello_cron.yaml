@@ -1,0 +1,8 @@
+name: hello-cron
+description: Example scheduled task
+schedule: "*/5 * * * *"
+steps:
+  - name: greet
+    handler: text.truncate
+    params:
+      text: "Hello from scheduled task!"
